@@ -1,64 +1,23 @@
-<<<<<<< HEAD
-name: traffic_med_env
-description: Traffic signal control with ambulance severity prioritization
+# === openenv.yaml ===
 
-action_space:
-  type: discrete
-  n: 4  # Four possible actions: one for each direction
+environment_id: traffic-med-env
+version: "1.0"
 
-observation_space:
-  type: dict
-  keys:
-    traffic: 
-      type: list
-      shape: [4]  # Number of cars in each of the 4 lanes
-      dtype: int
-    ambulance_lane: 
-      type: int  # Which lane currently has the ambulance (0-3)
-    severity: 
-      type: int  # Severity level of the ambulance (e.g., 1 to 3)
-
-reward_range:
-  min: 0.0
-  max: 1.0
-
-step_endpoint: /step  # API endpoint that returns next state and reward
-reset_endpoint: /reset  # API endpoint that resets the environment
-state_endpoint: /state  # API endpoint that returns the current state
+entry_point: env:TrafficMedEnv
 
 tasks:
-  - easy
-  - medium
-=======
-name: traffic_med_env
-description: Traffic signal control with ambulance severity prioritization
+  easy:
+    description: "Normal traffic conditions"
+    difficulty: easy
 
-action_space:
-  type: discrete
-  n: 4  # Four possible actions: one for each direction
+  medium:
+    description: "Moderate traffic with ambulance priority"
+    difficulty: medium
 
-observation_space:
-  type: dict
-  keys:
-    traffic: 
-      type: list
-      shape: [4]  # Number of cars in each of the 4 lanes
-      dtype: int
-    ambulance_lane: 
-      type: int  # Which lane currently has the ambulance (0-3)
-    severity: 
-      type: int  # Severity level of the ambulance (e.g., 1 to 3)
+  hard:
+    description: "Heavy traffic with high ambulance severity"
+    difficulty: hard
 
-reward_range:
-  min: 0.0
-  max: 1.0
-
-step_endpoint: /step  # API endpoint that returns next state and reward
-reset_endpoint: /reset  # API endpoint that resets the environment
-state_endpoint: /state  # API endpoint that returns the current state
-
-tasks:
-  - easy
-  - medium
->>>>>>> 85e45758f974eedc1504cf54d6431bd7544ce47b
-  - hard
+metadata:
+  author: "NayakalKarthik2026"
+  description: "Traffic signal control with ambulance prioritization using reinforcement learning"
