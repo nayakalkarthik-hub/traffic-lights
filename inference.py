@@ -15,11 +15,10 @@ def reset():
 
 @app.post("/step")
 def step(action: Action):
-    state, reward, done = env.step(action.action)
-
+    state, reward, done, info = env.step(action.action)
     return {
         "state": state,
         "reward": reward,
         "done": done,
-        "info": {}
+        "info": info
     }
