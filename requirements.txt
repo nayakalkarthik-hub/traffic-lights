@@ -1,5 +1,3 @@
-gradio
-numpy
-gym
-matplotlib
-openai
+fastapi
+uvicorn
+pydantic
